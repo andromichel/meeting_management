@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>التراسل الالي</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>التراسل الالي</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'display_members_information' %}">إختر عضوا</a>
+        <button type="submit">إرسال</button>
+        <a href="{% url 'home' %}">رجوع</a>
+    </form>
+   
+</body>
+</html>

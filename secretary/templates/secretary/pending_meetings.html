@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ header }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            display: block;
+        }
+        
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>{{ header }}</h1>
+    <form method="GET" action="{% url 'pending_meetings' %}">
+        <input type="text" name="q" placeholder="ابحث عن الاجتماع">
+        <button type="submit">بحث</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>الإسم</th>
+                <th>الدرجة</th>
+                <th>الرتبة</th>
+                <th>توقيت الزيارة</th>
+                <th>الحالة</th>
+                <th>تعديل</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for meeting in meetings %}
+            <tr>
+                <td>{{ meeting.name }}</td>
+                <td>{{ meeting.get_meeting_class_display }}</td>
+                <td>{{ meeting.degree }}</td>
+                <td>{{ meeting.scheduled_time|date:"d F Y H:i" }}</td>
+                <td>
+                    <span style="background-color: {% if meeting.status == 'approved' %}green{% elif meeting.status == 'rejected' %}red{% endif %};">
+                    {{ meeting.get_status_display }}
+                </span>
+                </td>
+                <td>
+                    <a href="{% url 'edit_meeting' meeting.id %}">تعديل</a>
+                    <a href="{% url 'delete_meeting' meeting.id %}">إلغاء</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick="window.print()">طباعة</button>
+    <a href="{% url 'home' %}">رجوع</a>
+
+</body>
+</html>

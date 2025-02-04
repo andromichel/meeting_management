@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>عرض معلومات الأعضاء</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        body{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<h1>عرض معلومات الأعضاء</h1>
+<form method="GET" action="">
+    <input type="text" name="q" placeholder="ابحث عن عضو">
+    <button type="submit">بحث</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>الاسم</th>
+            <th>الرتبة</th>
+
+            <th>القسم</th>
+            <th>الرقم العسكري</th>
+            <th>إختر عضوا</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+        <tr>
+            <td>{{ member.name }}</td>
+            <td>{{ member.get_degree_display }}</td>
+          
+            <td>{{ member.get_department_display }}</td>
+            <td>{{ member.member_id }}</td>
+            <td><a href="{% url 'schedule_meeting_with_member' member.id %}">إختر</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'home' %}">رجوع</a>
+</body>
+</html>

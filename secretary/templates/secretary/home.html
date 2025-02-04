@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>سكرتارية الكلية البحرية</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<h1>{{ header }}</h1>
+<a href="{% url 'schedule_meeting' %}">التراسل الالي</a>
+<a href="{% url 'enter_member_data' %}">تسجيل بيانات الأفراد</a>
+<a href="{% url 'display_members_information' %}">بيانات الأفراد</a>
+<a href="{% url 'pending_meetings' %}">إجتماعات السيد المدير</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>تعديل الاجتماع</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>تعديل الاجتماع</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">حفظ التعديلات</button>
+        <a href="{% url 'pending_meetings' %}">رجوع</a>
+    </form>
+</body>
+</html>

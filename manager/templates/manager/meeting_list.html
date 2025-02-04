@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>إجتماعات السيد المدير</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<h1>إجتماعات السيد المدير</h1>
+<table>
+    <thead>
+        <tr>
+            <th>الاسم</th>
+            <th>الدرجة</th>
+            <th>الرتبة</th>
+            <th>القسم</th>
+            <th>توقيت الزيارة</th>
+            <th>قبول</th>
+            <th>رفض</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for meeting in meetings %}
+        <tr id="meeting-{{ meeting.id }}">
+            <td>{{ meeting.name }}</td>
+            <td>{{ meeting.get_meeting_class_display }}</td>
+            <td>{{ meeting.get_degree_display }}</td>
+            <td>{{ meeting.get_department_display }}</td>
+            <td>{{ meeting.scheduled_time }}</td>
+            <td><a href="{% url 'approve_meeting' meeting.id %}">قبول</a></td>
+            <td><a href="{% url 'reject_meeting' meeting.id %}">رفض</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

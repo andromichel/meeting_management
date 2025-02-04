@@ -1,0 +1,85 @@
+body {
+    background-color: #001f3f; 
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+form {
+    background-color: #012a4a; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #001f3f;
+}
+
+a {
+    color: #0074D9; 
+    text-decoration: none;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+a:hover {
+    color: #FF851B;
+}
+
+button {
+    background-color: #0074D9; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="button"] {
+    background-color: #FF851B; 
+}
+
+button:hover {
+    background-color: #005bb5; 
+}
+
+button[type="button"]:hover {
+    background-color: #cc6600; 
+}
+
+select {
+    background-color: #013a63; 
+    color: white;
+    border: 1px solid #005bb5;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+option {
+    background-color: #013a63; 
+    color: white;
+}
